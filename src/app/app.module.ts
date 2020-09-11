@@ -26,6 +26,9 @@ import {MemberEditResolver} from './resolver/member-edit-resolver';
 import {PreventUnsaveChangesGuard} from './guards/prevent-unsave-changes.guard';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {TimeagoModule} from 'ngx-timeago';
+import {MemberListResolver} from './resolver/member-list-resolver';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {ButtonsModule} from 'ngx-bootstrap/buttons';
 
 
 @NgModule({
@@ -52,6 +55,8 @@ import {TimeagoModule} from 'ngx-timeago';
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TimeagoModule.forRoot(),
+    PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
     TabsModule.forRoot(),
     BrowserAnimationsModule,
     JwtModule.forRoot({
@@ -68,7 +73,8 @@ import {TimeagoModule} from 'ngx-timeago';
     ErrorInterceptorProvider,
     MemberDetailResolver,
     MemberEditResolver,
-    PreventUnsaveChangesGuard
+    PreventUnsaveChangesGuard,
+    MemberListResolver,
   ],
   bootstrap: [AppComponent]
 })

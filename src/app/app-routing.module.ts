@@ -10,6 +10,7 @@ import {MemberDetailResolver} from './resolver/member-detail-resolver';
 import {MemberEditComponent} from './member/member-edit/member-edit.component';
 import {MemberEditResolver} from './resolver/member-edit-resolver';
 import {PreventUnsaveChangesGuard} from './guards/prevent-unsave-changes.guard';
+import {MemberListResolver} from './resolver/member-list-resolver';
 
 
 const routes: Routes = [
@@ -19,7 +20,10 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      {path: 'members', component: MemberListComponent},
+      {
+        path: 'members', component: MemberListComponent,
+        resolve: {users: MemberListResolver}
+      },
       {
         path: 'members/:id', component: MemberDetailComponent,
         resolve: {user: MemberDetailResolver}

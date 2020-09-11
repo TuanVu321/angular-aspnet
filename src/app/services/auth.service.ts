@@ -15,6 +15,7 @@ export class AuthService {
   BaseUrl = 'http://localhost:5000/api/auth/';
   jwtHelper = new JwtHelperService();
   decodeedToken: any;
+  currentUser: User;
 
   // tslint:disable-next-line:typedef
   login(model: any) {
@@ -23,7 +24,9 @@ export class AuthService {
         const user = response;
         if (user) {
           localStorage.setItem('token', user.token);
+          localStorage.setItem('user', JSON.stringify(user.user));
           this.decodeedToken = this.jwtHelper.decodeToken(user.token);
+          this.currentUser = user.user;
         }
       })
     );
